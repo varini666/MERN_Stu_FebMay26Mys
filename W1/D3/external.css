@@ -10,7 +10,7 @@ margin: 10px 30px 20px 40px;/*Top:10 right:30 bottom:20 left:40*/
 margin:auto;/*centers horizontally */
 }
 body{
-    background-color: brown;
+    background-color: rgb(28, 54, 225);
 }
 .border{
     border: 2px solid black;
