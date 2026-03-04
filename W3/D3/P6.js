@@ -18,6 +18,6 @@ const student ={
 // console.log(student.scores.math);
 // console.log(student.scores.science);
 console.log(student.fullname());
-console.log(student.greet());
+student.greet();
 
 
