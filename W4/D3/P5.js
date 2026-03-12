@@ -11,7 +11,7 @@ introBtn.addEventListener("click",
             console.log("Raw response object: ",data);
             // output.textContent = "Status: " +response.status+ "\nOK:"+     //Http status code starting from 200
             // response.ok;
-            output.textContent = JSON.stringify(data,null,2);
+            output.textContent = JSON.stringify(data,null,2);  // 2- spacing
         })
         .catch(function(error){
             output.textContent = "Unexpected fetch error: "+error.message;
