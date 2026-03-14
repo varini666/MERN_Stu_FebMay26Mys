@@ -1,4 +1,4 @@
-function initProjectFilter(){
+function initProjectSearch(){
     const projectsContainer = document.getElementById("project-filters");
 
     if(!projectsContainer){
