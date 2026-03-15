@@ -13,10 +13,8 @@ function mergeSettings(savedSettingsJSON, defaultSettings) {
     };
 }
 const defaultSettings = {
-    theme: "light",
     notifications: true,
-    fontSize: 14
 };
-const savedSettingsJSON = '{"theme":"dark","fontSize":18}';
+const savedSettingsJSON = '{"name":"varini"}';
 const result = mergeSettings(savedSettingsJSON, defaultSettings);
 console.log(result);
