@@ -1,4 +1,4 @@
-// Array distruction
+// Array destructuring
 const items = {
     item1:"Laptop",
     item2:"server",
