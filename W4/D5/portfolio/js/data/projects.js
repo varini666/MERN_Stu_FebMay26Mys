@@ -1,10 +1,10 @@
 const projectsData = [
   {
     id: 1,
-    name: "Movie Time",
+    name: "Blue Collar",
     category: "MERN",
     description:
-      "Full stack movie ticket booking application with AI-powered smart movie suggestions.",
+      "Blue-collar jobs are occupations that involve manual work or skilled trades, commonly found in construction manufacturing, transportation, and maintenance. These jobs include electricians, plumbers, factory workers, mechanics, and truck drivers.",
     technologies: ["ReactJS", "ExpressJS", "MongoDB"],
     status: "Live",
     liveDemo: "#",
@@ -12,11 +12,11 @@ const projectsData = [
   },
   {
     id: 2,
-    name: "Gola",
-    category: "MERN",
+    name: "Agri Driven Agri Tech App",
+    category: "",
     description:
-      "Cab booking platform that helps users quickly book rides for daily travel.",
-    technologies: ["ReactJS", "ExpressJS", "MongoDB"],
+      "This Streamlet application is designed to offer a comprehensive suite of agricultural services through an intuitive, user-friendly interface. It includes features such as weather forecasting, crop recommendation,disease prediction, yield estimation, and insurance risk assessment, all accessible via a navigable sidebar menu..",
+    technologies: ["python", "HTML", "CSS","JS"],
     status: "Live",
     liveDemo: "#",
     github: "#"
