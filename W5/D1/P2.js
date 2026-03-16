@@ -1,3 +1,4 @@
+// Array distruction
 const items = {
     item1:"Laptop",
     item2:"server",
