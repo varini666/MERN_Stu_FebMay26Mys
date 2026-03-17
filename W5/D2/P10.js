@@ -4,6 +4,7 @@ function getBaseAmount(){
         setTimeout(function(){
             resolve(1000);//1000 is the price, base amt
         },500);
+        
     });
 }
 getBaseAmount()
