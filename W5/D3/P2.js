@@ -17,7 +17,7 @@ function getOrders(userID){
 
 async function showUserAndUsers(){
     const user = await getUser();
-    console.log("User loaded:",user.name); //.name is to get the name of the user
+    console.log("User loaded:",user.name);   //.name is to get the name of the user
 
     const orders = await getOrders(user.id);
     console.log("Orders loaded",orders);
