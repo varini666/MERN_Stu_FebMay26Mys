@@ -31,19 +31,15 @@ function initProjectSearch(){
         projectsTechnologies.className = "text-sm ";
         projectsTechnologies.textContent = projects.technologies;
 
-        const buttonContainer = document.createElement("div");
-buttonContainer.className = "flex justify-center gap-4 mt-4";
-
 const liveBtn = document.createElement("a");
 liveBtn.href = projects.liveLink;
 liveBtn.textContent = "Live Demo";
-liveBtn.className = "bg-blue-500 text-white px-4 py-2 rounded hover:bg-green-800";
+liveBtn.className = "bg-blue-500 text-white px-4 py-2 rounded hover:bg-green-800 inline-block";
 
 const githubBtn = document.createElement("a");
 githubBtn.href = projects.githubLink;
 githubBtn.textContent = "GitHub";
-githubBtn.className = "bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-600";
-
+githubBtn.className = "bg-gray-800 text-white px-4 py-2 rounded hover:bg-gray-600 inline-block";
         card.appendChild(projectsName);
         card.appendChild(projectsCategory);
         card.appendChild(projectsDescription);
