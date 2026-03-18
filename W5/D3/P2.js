@@ -10,7 +10,7 @@ function getUser(){
 function getOrders(userID){
     return new Promise(function(resolve){
         setTimeout(function(){
-            resolve(["order-A","order-B"]);
+            resolve(["order-A","order--B"]);
         },12000);
     });
 }
