@@ -5,7 +5,7 @@ function loadCustomerProfile(){
         const isServiceAvailable = true;
 
         if(isServiceAvailable){
-            resolve("Success! Customer profile loaded.");
+            resolve("Success! Customer profile Loaded.");
         }
         else{
             reject("Unsuccessful!! Customer profile unavailable.");
