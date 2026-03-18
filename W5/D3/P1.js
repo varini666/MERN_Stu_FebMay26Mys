@@ -1,4 +1,4 @@
-// Introduction to async/await
+// Introduction to Async/Await
 function getMessage(){
     return new Promise(function(resolve){
         setTimeout(() => {
