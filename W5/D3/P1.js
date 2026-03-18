@@ -8,7 +8,7 @@ function getMessage(){
 }
 
 async function showMessage(){
-    console.log("Loading message...");
+    console.log("Loading message....");
     const message = await getMessage();
     console.log(message);
 }
