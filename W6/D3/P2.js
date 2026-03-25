@@ -14,5 +14,6 @@ console.log("File written synchronously");
 
 const content = fs.readFileSync(filePath,"utf-8");
 
+
 console.log("File read synchronously.")
 console.log(content);
