@@ -1,5 +1,4 @@
 // Understanding the HTTP module
-
 // Importing built-in http module
 const http = require("http");
 
