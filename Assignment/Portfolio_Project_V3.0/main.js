@@ -1,0 +1,17 @@
+document.addEventListener("DOMContentLoaded",
+    function(){
+    renderSkills();   
+    initThemeToggle();
+    initContactValidation();
+    initModal();
+    initScrollProgress();
+    initScrollSpy();
+    initBackToTop();
+    initProjectSearch();
+    initProjectFilter();
+    initProjectSort();
+    initTyping();
+    initFormAutoSave();
+    initGreeting();
+    initLocation();
+});
