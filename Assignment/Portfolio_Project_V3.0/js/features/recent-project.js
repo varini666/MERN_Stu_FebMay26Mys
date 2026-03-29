@@ -4,6 +4,5 @@ function saveRecent(project){
     if(!recent.includes(project)){
     recent.push(project);
 }
-
 localStorage.setItem("recent", JSON.stringify(recent));
 }
