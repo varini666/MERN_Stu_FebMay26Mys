@@ -5,6 +5,11 @@ const app = express();
 
 app.get("/users",function(req,res){
     // res.send() sends a response body and ends the request automatically
+        res.status(200).json([ 
+        {message:"success."},
+        {id:1,name:"varini"},
+        {id:2,name:"Aishu"},
+    ]);
     res.send("Returning all users");
 });
 
@@ -12,7 +17,7 @@ app.get("/users",function(req,res){
 app.post("/users",function(req,res){
     // res.status() sets the HTTP status code before sending the response body
     res.status(201).send("User created.");
-});
+}); 
 
 app.listen(4000,function(){
     console.log("Express server running at http://localhost:4000");
