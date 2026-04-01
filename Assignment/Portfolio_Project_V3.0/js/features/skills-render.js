@@ -1,44 +1,17 @@
-function renderSkills(){
-    const skillsContainer = document.getElementById("skills-container");
+// Render Skills
 
-    if(!skillsContainer){
-        console.log("Skills container not found");
-        return;
-    }
+function renderSkills(data) {
 
-    skillsContainer.innerHTML = "";
-    skillsData.forEach(function(skill){
-        // to create outer card
-        const card = document.createElement("div");
-        card.className = "p-8 text-center bg-white rounded-3xl shadow-lg";
+    const container = document.getElementById("skills-container");
 
-        // create icon
-        const iconBox = document.createElement("div");
-        iconBox.className = "w-20 h-20 mx-auto mb-4 bg-green-900 rounded-2xl flex items-center justify-center";
+    container.innerHTML = "";
 
-        // create icon text
-        const iconText = document.createElement("span");
-        iconText.className = "text-2xl text-white font-bold";
-        iconText.textContent = skill.shortLabel;
+    data.forEach(skill => {
 
-        // Put icon text inside icon box
-        iconBox.appendChild(iconText);
+        const div = document.createElement("div");
 
-        // create skill name
-        const skillName = document.createElement("h3");
-        skillName.className = "text-xl font-bold mb-2";
-        skillName.className = skill.name;
+        div.textContent = skill.name;
 
-        // create skill desc
-        const skillDescription = document.createElement("p");
-        skillDescription.className = "text-sm";
-        skillDescription.textContent = skill.description;
-        // Append all child elements to card
-        card.appendChild(iconBox);
-        card.appendChild(skillName);
-        card.appendChild(skillDescription);
-        // Append card to skills container
-        skillsContainer.appendChild(card);
+        container.appendChild(div);
     });
-    console.log("Skills rendered successfully");
 }
