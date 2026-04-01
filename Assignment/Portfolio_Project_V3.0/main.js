@@ -1,17 +1,16 @@
-document.addEventListener("DOMContentLoaded",
-    function(){
-    renderSkills();   
-    initThemeToggle();
-    initContactValidation();
-    initModal();
+document.addEventListener("DOMContentLoaded", function () {
     initScrollProgress();
     initScrollSpy();
     initBackToTop();
     initProjectSearch();
-    initProjectFilter();
+    initCategoryFilter();
     initProjectSort();
-    initTyping();
+    initTypingEffect();
+    initSkillsFilter();
     initFormAutoSave();
-    initGreeting();
-    initLocation();
+    initRecentlyViewed();
+    initThemePersistence(); 
+    
+    renderProjects(projects);
+    renderSkills(skills);
 });
