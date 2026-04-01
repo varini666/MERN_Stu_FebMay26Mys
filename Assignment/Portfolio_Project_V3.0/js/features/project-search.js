@@ -1,12 +1,19 @@
-function initProjectSearch(){
-    const input = document.getElementById("project-search");
+// Feature 4: Project Search (Live Filtering)
 
-input.addEventListener("input", () => {
-    const keyword = input.value.toLowerCase();
+function initProjectSearch() {
 
-    const filtered = projectsData.filter(p => p.name.toLowerCase().includes(keyword));
+    const input = document.getElementById("search-input");
 
-    renderProjects(filtered);
-    updateProjectCount(filtered.length);
-});
+    if (!input) return;
+
+    input.addEventListener("input", function () {
+
+        const searchText = input.value.toLowerCase();
+
+        const filtered = projects.filter(project =>
+            project.name.toLowerCase().includes(searchText)
+        );
+
+        renderProjects(filtered);
+    });
 }
