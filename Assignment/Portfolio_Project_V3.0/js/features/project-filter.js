@@ -1,21 +1,29 @@
-function initProjectFilter(){
-    const filters = ["All","Frontend","Backend"];
+// Feature 6: Category Filter
 
-    const container = document.getElementById("project-filters");
+function initCategoryFilter() {
 
-    filters.forEach(cat => {
-    const btn = document.createElement("button");
-    btn.textContent = cat;
+    const buttons = document.querySelectorAll(".category-btn");
 
-    btn.onclick = () => {
-    const filtered = cat === "All"
-        ? projectsData
-        : projectsData.filter(p => p.category === cat);
+    if (!buttons.length) return;
 
-    renderProjects(filtered);
-    updateProjectCount(filtered.length);
-    };
+    buttons.forEach(button => {
 
-    container.appendChild(btn);
-});
+        button.addEventListener("click", function () {
+
+            const category = button.getAttribute("data-category");
+
+            let filtered;
+
+            if (category === "all") {
+                filtered = projects;
+            } else {
+                filtered = projects.filter(project =>
+                    project.category === category
+                );
+            }
+
+            renderProjects(filtered);
+        });
+
+    });
 }
