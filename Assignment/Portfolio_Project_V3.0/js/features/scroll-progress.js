@@ -1,9 +1,17 @@
-function initScrollProgress(){
-    const bar = document.getElementById("scroll-bar");
+function initScrollProgress() {
 
-    window.addEventListener("scroll", () => {
-    const scrolled = window.scrollY;
-    const height = document.documentElement.scrollHeight - window.innerHeight;
-    bar.style.width = (scrolled / height) * 100 + "%";
-});
+    const progressBar = document.getElementById("scroll-progress");
+
+    window.addEventListener("scroll", function () {
+
+        console.log("scrolling..."); 
+
+        const scrollTop = window.scrollY;
+        const totalHeight =
+            document.documentElement.scrollHeight - window.innerHeight;
+
+        const percentage = (scrollTop / totalHeight) * 100;
+
+        progressBar.style.width = percentage + "%";
+    });
 }
