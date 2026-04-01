@@ -2,6 +2,7 @@
 const jwt = require("jsonwebtoken");
 
 const secretKey = "monkey123";
+
 // const wrongsecretKey = "Don123";
 
 function loginUser(email,password){
