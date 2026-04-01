@@ -1,25 +1,29 @@
-function initBackToTop(){
-    const topBtn = document.getElementById("top-btn");
-    if(!topBtn){
-        console.log("Back to top button not found");
-        return;
-    }
+// Feature 3: Back to Top Button
 
-    // Show / hide button on scroll
-    window.addEventListener("scroll", function(){
-        if(window.scrollY > 300){
-            topBtn.classList.remove("hidden");
+function initBackToTop() {
+
+    const button = document.getElementById("back-to-top");
+
+    if (!button) return;
+
+    // Show / Hide button on scroll
+    window.addEventListener("scroll", function () {
+
+        if (window.scrollY > 300) {
+            button.style.display = "block";
         } else {
-            topBtn.classList.add("hidden");
+            button.style.display = "none";
         }
+
     });
 
-    // Scroll to top
-    topBtn.addEventListener("click", function(){
+    // Scroll to top when clicked
+    button.addEventListener("click", function () {
+
         window.scrollTo({
             top: 0,
+            behavior: "smooth"
         });
-    });
 
-    console.log("Back to top initialized");
+    });
 }
