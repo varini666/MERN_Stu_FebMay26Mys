@@ -1,21 +1,32 @@
-function initScrollSpy(){
+// Feature 2: Scroll Spy (Active Nav Highlight)
+
+function initScrollSpy() {
+
     const sections = document.querySelectorAll("section");
-    const links = document.querySelectorAll("nav a");
+    const navLinks = document.querySelectorAll(".nav-link");
 
-    window.addEventListener("scroll", () => {
-    let current = "";
+    window.addEventListener("scroll", function () {
+            let currentSection = "";
 
-    sections.forEach(sec => {
-        if(window.scrollY >= sec.offsetTop - 100){
-        current = sec.id;
-    }
+        sections.forEach(section => {
+
+            const sectionTop = section.offsetTop - 100;
+
+            if (window.scrollY >= sectionTop) {
+                currentSection = section.getAttribute("id");
+            }
+
+        });
+
+        navLinks.forEach(link => {
+
+            link.classList.remove("text-blue-500");
+
+            if (link.getAttribute("href") === "#" + currentSection) {
+                link.classList.add("text-blue-500");
+            }
+
+        });
+
     });
-
-    links.forEach(link => {
-    link.classList.remove("active");
-    if(link.getAttribute("href").includes(current)){
-        link.classList.add("active");
-    }
-    });
-});
 }
