@@ -52,7 +52,7 @@ app.post("/login",function(req,res){
         userId:101,
         email:email,
         role:"member"
-    },secretKey,{expiresIn:"10m",
+    },secretKey,{expiresIn:"1h",
         algorithm:"HS256",
         issuer:"jwt-example"}
         );
