@@ -28,7 +28,7 @@ function requireRole(role){
     }
     next();
     }
-}
+}                      
 
 app.get("/profile",function(req,res){
     res.json({
@@ -42,6 +42,14 @@ app.get("/admin",requireRole("admin"),function(req,res){
     res.json({
         success:true,
         message:"Admin Page",
+        user:req.user
+    });
+});
+
+app.get("/reports",requireRole(["reports","manager"]),function(req,res){
+    res.json({
+        success:true,
+        message:"Report Page",
         user:req.user
     });
 });
