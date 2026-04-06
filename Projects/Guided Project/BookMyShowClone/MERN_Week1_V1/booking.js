@@ -17,6 +17,7 @@ function checkDuplicateBooking(movie,showtime,seatCount){
             if(
                 currentBooking &&
                 currentBooking.movieId === movie.id &&
+                currentBooking.time === showtime.time &&
                 currentBooking.seatCount === seatCount
             ){
                 return reject("Duplicate booking detected. Ticket already booked");
@@ -26,13 +27,14 @@ function checkDuplicateBooking(movie,showtime,seatCount){
     });
 }
 
+
 function checkSeatsAvailability(showtime,seatCount){
     return new Promise((resolve,reject)=>{
         setTimeout(()=>{
             if(showtime.seatsAvailable < seatCount){
-                return reject(`Only ${showtime.seatsAvailable} seat(s) are available`)
+                return reject(`Only ${showtime.seatsAvailable} seat(s) are available.`);
             }
-            resolve("seats are available");
+            resolve("Seats are available");
         },300);
     });
 }
@@ -73,7 +75,7 @@ function processBooking(movie,showtime,seatCount){
             return checkSeatsAvailability(showtime,seatCount);
         })
         .then(()=>generateBookingDetails(movie,showtime,seatCount))
-        .then(booking=>confirmBooking(booking,showtime))
+        .then((booking)=>confirmBooking(booking,showtime))
         .catch((error)=>{
             bookingEmitter.emit("bookingfailed",error);
             throw error;
@@ -86,7 +88,7 @@ async function processBookingAsync(movie,time,seatCount){
     try{
         bookingEmitter.emit("bookingStarted");
 
-        await checkDuplicateBooking(movie,showtime,seatCount)
+        await checkDuplicateBooking(movie,showtime,seatCount);
         bookingEmitter.emit("bookingValidated");
 
         await checkSeatsAvailability(showtime,seatCount);
