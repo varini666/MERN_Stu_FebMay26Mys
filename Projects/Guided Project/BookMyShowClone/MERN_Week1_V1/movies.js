@@ -13,7 +13,7 @@ const movies = [
     },  
     {
         id:2,
-        title:"Love Moctail3",
+        title:"LoveMocktail3",
         showtimes:[
             {time: "10:30 AM", seatsAvailable: 100},
             {time: "1:00 PM", seatsAvailable: 70},
