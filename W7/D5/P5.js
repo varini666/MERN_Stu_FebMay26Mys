@@ -46,7 +46,7 @@ app.get("/admin",requireRole("admin"),function(req,res){
     });
 });
 
-app.get("/reports",requireRole(["reports","manager"]),function(req,res){
+app.get("/reports",requireRole(["admin","manager"]),function(req,res){
     res.json({
         success:true,
         message:"Report Page",
