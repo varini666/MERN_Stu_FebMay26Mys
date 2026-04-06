@@ -17,14 +17,14 @@ function cancelBooking(movies){
         return null;
     }
 
-    const Showtime = movie.showtimes.find((show)=>show.time.toLowerCase()===booking.time.toLowerCase());
-    if(!Showtime){
+    const showtime = movie.showtimes.find((show)=>show.time.toLowerCase()===booking.time.toLowerCase());
+    if(!showtime){
         bookingEmitter.emit("bookingFailed","Showtime data not found");
         return null;
     }
 
     // restore seats
-    Showtime.seatsAvailable +=booking.seatCount;
+    showtime.seatsAvailable +=booking.seatCount;
 
     // clear current Booking
     clearCurrentBooking();
