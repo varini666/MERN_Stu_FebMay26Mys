@@ -11,80 +11,78 @@ function clearCurrentBooking(){
     currentBooking = null;
 }
 
-function checkDuplicateBooking(movie,showtime,seatCount){
+function checkDuplicateBooking(movie,showtime, seatCount){
     return new Promise((resolve,reject)=>{
         setTimeout(() => {
-            if(
+            if (
                 currentBooking &&
                 currentBooking.movieId === movie.id &&
                 currentBooking.time === showtime.time &&
                 currentBooking.seatCount === seatCount
-            ){
+            ) {
                 return reject("Duplicate booking detected. Ticket already booked");
             }
             resolve("No Duplicate booking found.");
-        },300);
+        }, 300);
     });
 }
 
-
 function checkSeatsAvailability(showtime,seatCount){
     return new Promise((resolve,reject)=>{
-        setTimeout(()=>{
-            if(showtime.seatsAvailable < seatCount){
+        setTimeout(() => {
+            if (showtime.seatsAvailable < seatCount) {
                 return reject(`Only ${showtime.seatsAvailable} seat(s) are available.`);
             }
             resolve("Seats are available");
-        },300);
+        }, 300);
     });
 }
 
 function generateBookingDetails(movie,showtime,seatCount){
     return new Promise((resolve)=>{
-        setTimeout(()=>{
+        setTimeout(() => {
             const booking = {
-                bookingId: `BOOK-$(Data.now())`,
-                movieId:movie.id,
-                movieTitle:movie.title,
+                bookingId: `BOOK-${Date.now()}`,
+                movieId: movie.id,
+                movieTitle: movie.title,
                 time:showtime.time,
                 seatCount
             };
             resolve(booking);
-        },300);
+        }, 300);
     });
 }
 
 function confirmBooking(booking,showtime){
     return new Promise((resolve)=>{
-        setTimeout(()=>{
+        setTimeout(() => {
             showtime.seatsAvailable-=booking.seatCount;
-            currentBooking=booking;
+            currentBooking = booking;
             bookingEmitter.emit("bookingConfirmed",booking);
             resolve(booking);
-        },300);
+        }, 300);
     });
 }
 
-// Promise chaining
+//Promise chaining
 function processBooking(movie,showtime,seatCount){
     bookingEmitter.emit("bookingStarted");
 
     return checkDuplicateBooking(movie,showtime,seatCount)
-        .then(()=>{
-            bookingEmitter.emit("bookingValidated");
-            return checkSeatsAvailability(showtime,seatCount);
-        })
-        .then(()=>generateBookingDetails(movie,showtime,seatCount))
-        .then((booking)=>confirmBooking(booking,showtime))
-        .catch((error)=>{
-            bookingEmitter.emit("bookingfailed",error);
-            throw error;
-        });
+            .then(()=>{
+                bookingEmitter.emit("bookingValidated");
+                return checkSeatsAvailability(showtime,seatCount);
+            })
+            .then(()=>generateBookingDetails(movie,showtime,seatCount))
+            .then((booking)=>confirmBooking(booking,showtime))
+            .catch((error)=>{
+                bookingEmitter.emit("bookingfailed",error);
+                throw error;
+            });
 }
 
-// async/await
-
-async function processBookingAsync(movie,time,seatCount){
+//async/await
+async function processBookingAsync(movie,showtime,seatCount){
     try{
         bookingEmitter.emit("bookingStarted");
 
@@ -96,7 +94,7 @@ async function processBookingAsync(movie,time,seatCount){
         const booking = await generateBookingDetails(movie,showtime,seatCount);
 
         const confirmedBooking = await confirmBooking(booking,showtime);
-
+        
         return confirmedBooking;
     }
     catch(error){
@@ -105,7 +103,7 @@ async function processBookingAsync(movie,time,seatCount){
     }
 }
 
-module.exports={
+module.exports = {
     getCurrentBooking,
     clearCurrentBooking,
     processBooking,
