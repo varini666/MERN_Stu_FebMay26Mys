@@ -12,7 +12,7 @@ async function runCrudDemo() {
                 role: String
         });
 
-        const Student = mongoose.model.Student || mongoose.model("Student",studentSchema);
+        const Student = mongoose.models.Student || mongoose.model("Student",studentSchema);
         // Clearing pervious demo data
         await Student.deleteMany({role:"demo-student"});
 
