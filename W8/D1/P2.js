@@ -34,7 +34,7 @@ async function runCrudDemo() {
         // console.log("Created new student with create()",secondStudent);
 
         // Read using the function of find
-        const allDemoStudents = await Student.find({role:"demo-student"});
+        const allDemoStudents = await Student.find({role:"demo-student"});  // If no parameter is mentioned then returns all data
         // console.log("Read with find()",allDemoStudents);
 
         // Read using findOne()
