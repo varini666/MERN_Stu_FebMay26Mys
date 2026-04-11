@@ -1,4 +1,4 @@
-// 
+// Aggregation functions in MongoDB
 const mongoose = require("mongoose");
 async function runAggregate() {
     try{
