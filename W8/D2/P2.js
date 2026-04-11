@@ -15,4 +15,4 @@ employeeSchema.index({role:1,createdAt:-1});
 const Employee = mongoose.model("IndexedEmployee",employeeSchema);
 
 console.log("Compound index: ");
-console.log("{role:1,createdAt:-1");
+console.log("{role:1,createdAt:-1"); 
