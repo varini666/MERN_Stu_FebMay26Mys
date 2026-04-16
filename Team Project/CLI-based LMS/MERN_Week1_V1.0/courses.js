@@ -1,44 +1,47 @@
 const courses = [
     {
-        id:1,
-        title:"MERN Stack",
-        instructor:"Rakesh",
-        totalLessons:4,
-        lessons:["ReactJS","ExpressJS","NodeJS","MongoDB"],
-        level:"Beginner",
-        category:"Programming",
-        status:"True"
+        id: 1,
+        title: "MERN stack",
+        instructor: "Rakesh",
+        category: "Programming",
+        level: "Beginner",
+        status: true,
+        totalNumber: 3,
+        lessons: ["React.js", "Express.js", "Node.js"]
     },
+
     {
-        id:2,
-        title:"Cognitive ability",
-        instructor:"Prabhu",
-        totalLessons:6,
-        lessons:["Number system","Proportions","Simple Intrest","Compound Intrest","Speed & Time","Averages"],
-        level:"Intermediate",
-        category:"Aptitude",
-        status:"True"
+        id: 2,
+        title: "Node.js",
+        instructor: "Sonu",
+        category: "Backend",
+        level: "Intermediate",
+        status: false,
+        totalNumber: 4,
+        lessons: ["Modules", "Buffer", "Events", "File System"]
     },
+
     {
-        id:3,
-        title:"Verbal ability",
-        instructor:"Ramesh",
-        totalLessons:6,
-        lessons:["Subject verb agreement","Parts of speech","Tenses","Synonims","Antonims","Passage"],
-        level:"Intermediate",
-        category:"Verbal",
-        status:"false"
+        id: 3,
+        title: "HTML & CSS",
+        instructor: "Anu",
+        category: "Web Development",
+        level: "Beginner",
+        status: true,
+        totalNumber: 4,
+        lessons: ["HTML Tags", "CSS Basics", "Grid", "Flexbox"]
     },
+
     {
-        id:4,
-        title:"Foundational Course",
-        instructor:"Manjunath",
-        totalLessons:3,
-        lessons:["Art of coding","Java","DS"],
-        level:"Beginner",
-        category:"Programming",
-        status:"false"
+        id: 4,
+        title: "Python",
+        instructor: "Saara",
+        category: "Programming",
+        level: "Beginner",
+        status: false,
+        totalNumber: 3,
+        lessons: ["Syntax", "Loops", "Functions"]
     }
 ];
-// console.log(courses);
+
 module.exports = courses;
