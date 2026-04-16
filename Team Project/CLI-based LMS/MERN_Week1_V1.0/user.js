@@ -1,6 +1,6 @@
-const user = {
+let user = {
     name: "",
-    enrolledCourses: {}   
+    enrolledCourses: []
 };
 
 module.exports = user;
