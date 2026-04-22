@@ -4,7 +4,7 @@ const movieSchema=new mongoose.Schema({
         type:String,
         require:[true,"Movie title is required"],
         trim:true,
-        index:true
+        index:true,
     },
     genre:{
         type:String,
@@ -16,7 +16,7 @@ const movieSchema=new mongoose.Schema({
             "Horror",
             "Sci-Fi",
             "Romantic",
-            "Thriller"
+            "Thriller",
         ]
     },
     rating:{
@@ -24,29 +24,30 @@ const movieSchema=new mongoose.Schema({
         require:true,
         min:[1,"Rating must be at least 1"],
         max:[1,"Rating cannot exceed 5"],
-        index:true
+        index:true,
     },
     duration:{
         type:Number,
-        require:[true,"Duration is required"],
+        required:[true,"Duration is required"],
     },
     releaseDate:{
         type:Date,
         required:[true,"Release date is required"],
-        index:true
+        index:true,
     },
     poster:{
         type:String,
-        default:""
+        default:"",
     },
     language:{
         type:String,
-        index:true
+        index:true,
     },
     isActive:{
         type:Boolean,
-        default:true
+        default:true,
     },
+},{
         timestamps:true,
 });
 
