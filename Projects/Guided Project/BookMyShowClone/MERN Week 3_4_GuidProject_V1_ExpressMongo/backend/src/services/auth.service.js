@@ -5,11 +5,11 @@ const bcrypt = require("bcrypt");
 const jwt = require("jsonwebtoken");
 
 // Register user
-exports.registerUser = async({name,email,password})=>{
+exports.registerUser = async ({name,email,password}) =>{
     const existingUser = await User.findOne({email});
 
-    if (existingUser){
-        throw new Error("User already exist");
+    if (existingUser) {
+        throw new Error("User already exists");
     }
 
     const user = await User.create({
@@ -23,18 +23,18 @@ exports.registerUser = async({name,email,password})=>{
     return {email:user.email};
 };
 
-// verify OTP
+//Verify OTP
 exports.verifyOTP = async({email,otp})=>{
     const record = await OTP.findOne({email}).select("+otp");
 
-    if(!record){
+    if (!record) {
         throw new Error("OTP expired or not found");
     }
 
     const isMatch = await bcrypt.compare(otp,record.otp);
 
-    if(!isMatch){
-        record.attempts+=1;
+    if (!isMatch) {
+        record.attempts +=1;
         await record.save();
         throw new Error("Invalid OTP");
     }
@@ -44,30 +44,31 @@ exports.verifyOTP = async({email,otp})=>{
 };
 
 // Login
-exports.loginUser = async({email,password})=>{
+exports.loginUser = async ({email,password}) =>{
     const user = await User.findOne({email}).select("+password");
 
-    if(!user){
+    if (!user) {
         throw new Error("User not found");
     }
-    if(!user.isVerified){
+    if (!user.isVerified) {
         throw new Error("User not verified");
     }
     const isMatch = await user.comparePassword(password);
 
-    if (!isMatch){
+    if (!isMatch) {
         throw new Error("Invalid credentials");
     }
+
     const token = jwt.sign(
         {id:user._id,role:user.role},
         process.env.JWT_SECRET,
-        {expiresIn:"id"}
+        {expiresIn:"1d"}
     );
 
     return{
         token,
         user:{
-            id:user_id,
+            id:user._id,
             role:user.role,
         },
     };
