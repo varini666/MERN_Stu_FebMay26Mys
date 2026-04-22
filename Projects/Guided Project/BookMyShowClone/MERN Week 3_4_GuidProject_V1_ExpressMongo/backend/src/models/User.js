@@ -5,31 +5,32 @@ const userSchema = new mongoose.Schema({
     name:{
         type:String,
         required:[true,"Name is required"],
-        trim:true
+        trim:true,
     },
 email:{
         type:String,
         required:[true,"email is required"],
         unique:true,
         lowerCase:true,
-        match:[/^\s+@\s+\.\s+$/,"Please use a valid email"],
-        index:true
+        match:[/^\S+@\S+\.\S+$/,"Please use a valid email"],
+        index:true,
     },
     password:{
         type:String,
         required:[true,"Password is required"],
         minlength:6,
-        select:false
+        select:false,
     },
     role:{
         type:String,
         enum:["user","admin"],
-        default:"user"
+        default:"user",
     },
     isVerified:{
         type:Boolean,
-        default:false
+        default:false,
     },
+},{
     timestamps:true,
 });
 // Hashing the password before save
