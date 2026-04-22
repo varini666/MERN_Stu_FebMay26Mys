@@ -2,11 +2,11 @@ const mongoose=require('mongoose');
 const seatSchema = new mongoose.Schema({
     seatNumber:{
         type:String,
-        required:true
+        required:true,
     },
     isBooked:{
         type:Boolean,
-        default:false
+        default:false,
     },
 },{_id:false});
 
@@ -15,33 +15,34 @@ const showSchema = new mongoose.Schema({
         type:mongoose.Schema.Types.ObjectId,
         ref:"Movie",
         required:true,
-        index:true
+        index:true,
     },
     date:{
         type:Date,
         required:true,
-        index:true
+        index:true,
     },
     time:{
         type:String,
-        require:true
+        required:true,
     },
     totalSeats:{
         type:Number,
-        require:true
+        required:true,
     },
     availableSeats:{
         type:Number,
-        require:true
+        required:true,
     },
     seats:{
         type:[seatSchema],
-        require:true
+        required:true,
     },
     isActive:{
         type:Boolean,
-        default:true
+        default:true,
     },
+},{
     timeStamps:true,
 });
 
