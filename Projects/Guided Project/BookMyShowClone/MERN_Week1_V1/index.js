@@ -5,7 +5,7 @@ const chalk = require("chalk");
 const movies = require("./movies");
 // console.log(movies);
 const bookingEmitter = require("./events");
-const {
+const {                            // this are in flower bracket bcz these are imported functions from validator.js
     validateMovieSelection,
     validateTimeSelection,
     validateSeatCount
