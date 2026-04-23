@@ -1,6 +1,6 @@
 const express = require("express");
 const router = express.Router();
-const bookingController = require("../controllers/show.controller");
+const bookingController = require("../controllers/booking.controller");
 const {protect} = require("../middleware/auth.middleware");
 
 //user booking route
