@@ -20,13 +20,13 @@ const generateSeats = (totalSeats) =>{
     return seats;
 };
 //Create Show
-exports.createShow = async ({MovieId,date,time,totalSeats})=> {
+exports.createShow = async ({movieId,date,time,totalSeats}) => {
     // check if movie exists
-    const movie = await Movie.findById(MovieId);
+    const movie = await Movie.findById(movieId);
     if(!movie)
-        throw new Error("Movie not found");
+        throw new Error("Movie not found");;
 
-    // Generate Seats
+    // Generate seats
     const seats = generateSeats(totalSeats);
 
     const show = await Show.create({
@@ -37,11 +37,11 @@ exports.createShow = async ({MovieId,date,time,totalSeats})=> {
         availableSeats:totalSeats,
         seats,
     });
-    return show;
+    return show; 
 };
 
-// Get shows
-exports.getShows = async ({movieId,date})=>{
+//Get shows
+exports.getShows = async ({movieId,date}) => {
     const filter = {isActive:true};
 
     if(movieId) filter.movieId = movieId;
@@ -51,38 +51,35 @@ exports.getShows = async ({movieId,date})=>{
         .populate("movieId")
         .sort({date:1});
 
-        return shows;
+    return shows;
 };
 
 // Get show by Id
 exports.getShowById = async (id) => {
     const show = await Show.findById(id).populate("movieId");
-    if(!show){
+    if(!show)
         throw new Error("Show not found");
 
-    return show;    
-    };
-}
+    return show;        
+};
 
-// Update show
+//Update show
 exports.updateShow = async(id,data)=>{
     const show = await Show.findByIdAndUpdate(id,data,{
-        returnDocument:"after",
+        returnDocument: "after",
         runValidators:true,
     });
-}
-if(!show){
+    if(!show)
         throw new Error("Show not found");
 
-    return show;    
-    };
+    return show;  
+};
 
-// Delete show
-exports.deleteShow = async (id) => {
-    //Soft delete
+// Delete show -- soft delete
+exports.deleteShow = async(id)=>{
     const show = await Show.findByIdAndUpdate(id,{
         isActive:false,
-    }); 
+    });
     if(!show)
         throw new Error("Show not found");
 };
