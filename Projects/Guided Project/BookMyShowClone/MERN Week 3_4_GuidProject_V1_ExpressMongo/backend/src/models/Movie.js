@@ -1,8 +1,9 @@
-const mongoose = require('mongoose');
-const movieSchema=new mongoose.Schema({
+const mongoose = require("mongoose");
+
+const movieSchema = new mongoose.Schema({
     title:{
         type:String,
-        require:[true,"Movie title is required"],
+        required:[true,"Movie title is required"],
         trim:true,
         index:true,
     },
@@ -10,20 +11,17 @@ const movieSchema=new mongoose.Schema({
         type:String,
         required:[true,"Genre is required"],
         enum:[
-            "Action",
-            "Drama",
-            "Comedy",
-            "Horror",
-            "Sci-Fi",
-            "Romantic",
-            "Thriller",
-        ]
+            "Action","Comedy","Drama","Horror","Sci-Fi",
+            "Romance","Thriller",
+        ],
+        index:true,
     },
-    rating:{
+    rating:
+    {
         type:Number,
-        require:true,
+        required:true,
         min:[1,"Rating must be at least 1"],
-        max:[1,"Rating cannot exceed 5"],
+        max:[5,"Rating cannot exceed 5"],
         index:true,
     },
     duration:{
@@ -48,10 +46,10 @@ const movieSchema=new mongoose.Schema({
         default:true,
     },
 },{
-        timestamps:true,
+    timestamps:true,
 });
 
-// compound index
+// Compound index
 movieSchema.index({genre:1,rating:-1});
 
 // Text index
