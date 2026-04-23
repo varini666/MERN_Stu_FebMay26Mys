@@ -1,43 +1,42 @@
 const Booking = require("../models/Booking");
 const Show = require("../models/Show");
 
-// Create booking
-exports.createBooking = async(userId,{showId,seats})=>{
-    //1. Get show
+// Create Booking
+exports.createBooking = async (userId,{showId,seats}) => {
+    // 1. Get show
     const show = await Show.findById(showId);
 
-    if(!show){
+    if (!show) {
         throw new Error("Show not found");
     }
 
-    //2. Validate seats
+    // 2. validate seats
     const selectedSeats = show.seats.filter((seat)=>
         seats.includes(seat.seatNumber));
-    if(selectedSeats.length!=seats.length){
-        throw new Error("seats do not exist");
-    } 
+    if (selectedSeats.length!=seats.length) {
+       throw new Error("seats do not exist");        
+    }
 
-    //3. Check if already booked
+    // 3. Check if already booked
     for(let seat of selectedSeats){
-        if(seat.isBooked){
+        if (seat.isBooked) {
             throw new Error(`Seat ${seat.seatNumber} is already booked`);
         }
-    } 
+    }
 
-    // 4. Mark seats as booked 
+    // 4. Mark seats as booked
     show.seats = show.seats.map((seat)=>{
-        if (seats.includes(seat.seatNumber)){
+        if (seats.includes(seat.seatNumber)) {
             seat.isBooked = true;
         }
         return seat;
     });
+    // 5. Update available seats
+    show.availableSeats -=seats.length;
 
-    //5. Update available seats
-    show.availableSeats -= seats.length;
-    
     await show.save();
 
-    //6. Create booking
+    // 6. Create booking
     const booking = await Booking.create({
         userId, showId, seats, totalSeats: seats.length,
     });
@@ -53,15 +52,14 @@ exports.getUserBookings = async (userId) => {
     .populate({
         path:"showId",
         select:"date time availableSeats movieId",
-
         populate:{
-            path:"movieId",
+            path: "movieId",
             select:"title genre",
         },
     })
     .sort("-createdAt");
 
-    // Transform response
+    //Transform response
     return bookings.map((booking)=>({
         bookingId:booking._id,
         seats:booking.seats,
@@ -80,7 +78,7 @@ exports.getUserBookings = async (userId) => {
             title:booking.showId.movieId.title,
             genre:booking.showId.movieId.genre,
         },
-    }))
+    }));
 };
 
 // Cancel booking
@@ -94,23 +92,23 @@ exports.cancelBooking = async (bookingId,userId) => {
     }
 
     if(booking.status === "cancelled"){
-        throw new Error("Already cancelled");
+        throw new Error("Already cancelled.");
     }
 
-    //1.get show
+    // 1.get show
     const show = await Show.findById(booking.showId);
-    //2. Release seats
+    // 2. Release seats
     show.seats = show.seats.map((seat)=>{
-        if(booking.seats.includes(seat.seatNumber)){
+        if (booking.seats.includes(seat.seatNumber)) {
             seat.isBooked = false;
-        }    
-            return seat;
+        }
+        return seat;
     });
-    //3. Update available seats
+    // 3. Update available seats
     show.availableSeats +=booking.seats.length;
     await show.save();
-    
-    //4. Update booking
+
+    // 4. Update booking
     booking.status = "cancelled";
-    await booking.save(); 
+    await booking.save();    
 };
