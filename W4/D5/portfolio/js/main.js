@@ -6,4 +6,6 @@ document.addEventListener("DOMContentLoaded",
         initThemeToggle();
         initProjectSearch();
         initBackToTop();
+        filterProjects();
     });
+    
