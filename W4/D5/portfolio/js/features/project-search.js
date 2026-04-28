@@ -9,7 +9,7 @@ function initProjectSearch(){
     projectsData.forEach(function(projects){
 
         const card = document.createElement("div");
-        card.className = "p-8 text-center bg-blue-100 rounded-3xl shadow-lg";
+        card.className = "p-8 text-center bg-pink-100 rounded-3xl shadow-lg";
 
         const iconText = document.createElement("span");
         iconText.className = "text-2xl text-white font-bold";
