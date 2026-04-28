@@ -1,5 +1,5 @@
 function initBackToTop(){
-    const topBtn = document.getElementById("top-btn");
+    const topBtn = document.getElementById("back-to-top");
     if(!topBtn){
         console.log("Back to top button not found");
         return;
@@ -18,6 +18,7 @@ function initBackToTop(){
     topBtn.addEventListener("click", function(){
         window.scrollTo({
             top: 0,
+            behavior:"smooth"
         });
     });
 
