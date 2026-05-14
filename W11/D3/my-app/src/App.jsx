@@ -1,11 +1,21 @@
 import './App.css'
-import {ManagingAPIState} from './component/P1'
-function App() {
+import { ManagingApiState } from "./components/P1";
+import { UseEffectLifecycle } from "./components/P2";
+import { AxiosLifecycle } from "./components/P3";
+import { CRUDOperation } from "./components/P4";
+import { PaginationCaching } from "./components/P5";
+import { UploadErrorBoundary } from './component/P6';
 
+function App() {
 
   return (
     <>
-      <ManagingAPIState/>
+        {/* <ManagingApiState /> */}
+        {/* <UseEffectLifecycle /> */}
+        {/* <AxiosLifecycle /> */}
+        {/* <CRUDOperation /> */}
+        {/* <PaginationCaching/> */}
+        <UploadErrorBoundary/>
     </>
   )
 }
