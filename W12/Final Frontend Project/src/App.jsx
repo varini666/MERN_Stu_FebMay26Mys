@@ -1,12 +1,18 @@
 import "./App.css";
-import CitySelector from "./components/CitySelector";
 import MovieSearch from "./components/MovieSearch";
+import GenreFilter from "./components/GenreFilter";
+import BookButton from "./components/BookButton";
+import LoginForm from "./components/LoginForm";
+import SearchShortcut from "./components/SearchShortcut";
 function App() {
     return (
         <>
-            <CitySelector/>
             {/* Controlled Component */}
             <MovieSearch/>
+            <GenreFilter/>
+            <BookButton/>
+            <LoginForm/>
+            <SearchShortcut/>
         </>
     );
 }
