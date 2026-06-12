@@ -1,18 +1,13 @@
 import "./App.css";
-import MovieSearch from "./components/MovieSearch";
-import GenreFilter from "./components/GenreFilter";
-import BookButton from "./components/BookButton";
-import LoginForm from "./components/LoginForm";
-import SearchShortcut from "./components/SearchShortcut";
+import AuthStatus from "./components/AuthStatus";
+import MovieLoader from "./components/MovieLoader";
+import MovieResults from "./components/MovieResults";
 function App() {
     return (
         <>
-            {/* Controlled Component */}
-            <MovieSearch/>
-            <GenreFilter/>
-            <BookButton/>
-            <LoginForm/>
-            <SearchShortcut/>
+        <AuthStatus/>
+        <MovieLoader/>
+        <MovieResults/>
         </>
     );
 }
