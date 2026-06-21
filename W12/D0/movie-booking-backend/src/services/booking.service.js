@@ -206,3 +206,4 @@ exports.cancelBooking = async (bookingId, userId) => {
 
   return booking;
 };
+
