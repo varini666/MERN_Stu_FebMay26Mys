@@ -1,11 +1,16 @@
-// W12\bookmyshow-frontend\src\pages\admin\ShowManagement.jsx
+// MERN_Stu_FebMay26Mys\W12\Master_bookmyshow-frontend\src\pages\admin\ShowManagement.jsx
 import { useEffect, useState } from "react";
 
 
 import { getMovies } from "../../api/movie.api";
 
 
-import { getShows, createShow, deleteShow } from "../../api/show.api";
+import {
+    getShows,
+    createShow,
+    updateShow,
+    deleteShow,
+} from "../../api/show.api";
 
 
 import ShowForm from "../../components/admin/ShowForm";
@@ -16,6 +21,9 @@ export default function ShowManagement() {
 
 
     const [shows, setShows] = useState([]);
+
+
+    const [editingShow, setEditingShow] = useState(null);
 
 
     async function loadData() {
@@ -37,8 +45,15 @@ export default function ShowManagement() {
     }, []);
 
 
-    async function handleCreate(showData) {
-        await createShow(showData);
+    async function handleSubmit(showData) {
+        if (editingShow) {
+            await updateShow(editingShow._id, showData);
+
+
+            setEditingShow(null);
+        } else {
+            await createShow(showData);
+        }
 
 
         loadData();
@@ -46,6 +61,12 @@ export default function ShowManagement() {
 
 
     async function handleDelete(id) {
+        const confirmed = window.confirm("Delete show?");
+
+
+        if (!confirmed) return;
+
+
         await deleteShow(id);
 
 
@@ -58,7 +79,12 @@ export default function ShowManagement() {
             <h1>Show Management</h1>
 
 
-            <ShowForm movies={movies} onSubmit={handleCreate} />
+            <ShowForm
+                movies={movies}
+                onSubmit={handleSubmit}
+                initialData={editingShow}
+                buttonText={editingShow ? "Update Show" : "Create Show"}
+            />
 
 
             <table
@@ -93,6 +119,7 @@ export default function ShowManagement() {
 
 
                             <td>
+                                <button onClick={() => setEditingShow(show)}>Edit</button>{" "}
                                 <button onClick={() => handleDelete(show._id)}>Delete</button>
                             </td>
                         </tr>
